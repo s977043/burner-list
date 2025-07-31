@@ -1,0 +1,155 @@
+'use client';
+
+import { useBurnerStore } from '@/store/useBurnerStore';
+import { checkAndHandleRollover } from '@/lib/rollover';
+import FrontCard from '@/components/FrontCard';
+import BackCard from '@/components/BackCard';
+import SinkList from '@/components/SinkList';
+import QuickAdd from '@/components/QuickAdd';
+import RolloverDialog from '@/components/RolloverDialog';
+import SettingsSheet from '@/components/SettingsSheet';
+import { useEffect, useState } from 'react';
+
+type TabType = 'front' | 'back' | 'sink';
+
+export default function MobilePage() {
+  const { current } = useBurnerStore();
+  const [activeTab, setActiveTab] = useState<TabType>('front');
+  const [showRolloverDialog, setShowRolloverDialog] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showQuickAdd, setShowQuickAdd] = useState(false);
+
+  useEffect(() => {
+    // Check for rollover on page load
+    checkAndHandleRollover();
+  }, []);
+
+  const frontItem = current.front.items[0];
+  const backItem = current.back.items[0];
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'front':
+        return <FrontCard item={frontItem} />;
+      case 'back':
+        return <BackCard item={backItem} />;
+      case 'sink':
+        return <SinkList items={current.sink.items} />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="px-4 py-3">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-xl font-bold text-gray-900">🔥 Burner List</h1>
+              <p className="text-xs text-gray-500">
+                {current.meta.periodType === 'day' ? 'Daily' : 'Weekly'} - 
+                {new Date(current.meta.startedAt).toLocaleDateString()}
+              </p>
+            </div>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-2 text-gray-600 hover:text-gray-800"
+            >
+              ⚙️
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Tab Navigation */}
+      <nav className="bg-white border-b">
+        <div className="flex">
+          <button
+            onClick={() => setActiveTab('front')}
+            className={`flex-1 py-3 px-4 text-center text-sm font-medium border-b-2 transition-colors ${
+              activeTab === 'front'
+                ? 'border-red-500 text-red-600 bg-red-50'
+                : 'border-transparent text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            🔥 Front
+          </button>
+          <button
+            onClick={() => setActiveTab('back')}
+            className={`flex-1 py-3 px-4 text-center text-sm font-medium border-b-2 transition-colors ${
+              activeTab === 'back'
+                ? 'border-orange-500 text-orange-600 bg-orange-50'
+                : 'border-transparent text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            🔶 Back
+          </button>
+          <button
+            onClick={() => setActiveTab('sink')}
+            className={`flex-1 py-3 px-4 text-center text-sm font-medium border-b-2 transition-colors ${
+              activeTab === 'sink'
+                ? 'border-blue-500 text-blue-600 bg-blue-50'
+                : 'border-transparent text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            🗂️ Sink ({current.sink.items.length})
+          </button>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="flex-1 p-4 overflow-y-auto">
+        {renderTabContent()}
+      </main>
+
+      {/* Quick Add Modal */}
+      {showQuickAdd && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-end z-40">
+          <div className="bg-white w-full rounded-t-lg p-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">Quick Add</h3>
+              <button
+                onClick={() => setShowQuickAdd(false)}
+                className="text-gray-500 hover:text-gray-700 text-xl"
+              >
+                ×
+              </button>
+            </div>
+            <QuickAdd onFocus={() => {}} />
+          </div>
+        </div>
+      )}
+
+      {/* Floating Action Button */}
+      <button
+        onClick={() => setShowQuickAdd(true)}
+        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors flex items-center justify-center text-xl z-30"
+      >
+        +
+      </button>
+
+      {/* Bottom Actions */}
+      <div className="bg-white border-t p-4">
+        <button
+          onClick={() => setShowRolloverDialog(true)}
+          className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors text-sm"
+        >
+          🔄 Start New Session
+        </button>
+      </div>
+
+      {/* Dialogs */}
+      <RolloverDialog 
+        isOpen={showRolloverDialog} 
+        onClose={() => setShowRolloverDialog(false)} 
+      />
+      <SettingsSheet 
+        isOpen={showSettings} 
+        onClose={() => setShowSettings(false)} 
+      />
+    </div>
+  );
+}
+
