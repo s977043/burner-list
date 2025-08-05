@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { useBurnerStore } from '../src/store/useBurnerStore';
+import { useBurnerStore } from './useBurnerStore';
 
 // Mock localStorage for testing
 const localStorageMock = {

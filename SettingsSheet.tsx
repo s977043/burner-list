@@ -1,6 +1,6 @@
 'use client';
 
-import { useBurnerStore } from '@/store/useBurnerStore';
+import { useBurnerStore } from './useBurnerStore';
 import { useState } from 'react';
 
 interface SettingsSheetProps {
@@ -27,7 +27,7 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold">⚙️ Settings</h2>
+          <h2 className="text-xl font-bold">⚙️ 設定</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 text-xl"
@@ -38,12 +38,12 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
 
         <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-semibold mb-3">Session Preferences</h3>
+            <h3 className="text-lg font-semibold mb-3">セッション設定</h3>
             
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Default Period Type
+                  デフォルト期間タイプ
                 </label>
                 <div className="flex gap-4">
                   <label className="flex items-center">

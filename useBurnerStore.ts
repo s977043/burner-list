@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { AppState, BurnerSession, BurnerItem, BurnerSlotType, Subtask } from '@/types';
+import { AppState, BurnerSession, BurnerItem, BurnerSlotType, Subtask } from './index';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialBurnerSession: BurnerSession = {

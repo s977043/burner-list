@@ -13,15 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Burner List - Productivity App",
-  description: "Manage your Front Burner, Back Burner, and Kitchen Sink tasks efficiently",
+  title: "バーナーリスト - 生産性アプリ",
+  description: "フロントバーナー、バックバーナー、キッチンシンクのタスクを効率的に管理",
   manifest: "/manifest.json",
   themeColor: "#dc2626",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Burner List",
+    title: "バーナーリスト",
   },
 };
 

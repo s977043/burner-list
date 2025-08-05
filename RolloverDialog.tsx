@@ -1,6 +1,6 @@
 'use client';
 
-import { useBurnerStore } from '@/store/useBurnerStore';
+import { useBurnerStore } from './useBurnerStore';
 import { useState } from 'react';
 
 interface RolloverDialogProps {
