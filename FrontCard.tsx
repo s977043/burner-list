@@ -1,7 +1,7 @@
 'use client';
 
-import { BurnerItem } from '@/types';
-import { useBurnerStore } from '@/store/useBurnerStore';
+import { BurnerItem } from './index';
+import { useBurnerStore } from './useBurnerStore';
 import { useState } from 'react';
 
 interface FrontCardProps {
@@ -41,7 +41,7 @@ export default function FrontCard({ item }: FrontCardProps) {
           onClick={() => setIsEditing(true)}
           className="text-red-600 hover:text-red-800 text-lg font-medium"
         >
-          + Add Front Burner Item
+          + フロントバーナー項目を追加
         </button>
       </div>
     );
@@ -50,7 +50,7 @@ export default function FrontCard({ item }: FrontCardProps) {
   return (
     <div className="bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 rounded-lg p-6 h-64 flex flex-col">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-red-800 font-bold text-lg">🔥 Front Burner</h3>
+        <h3 className="text-red-800 font-bold text-lg">🔥 フロントバーナー</h3>
         {item && (
           <div className="flex gap-2">
             <button

@@ -1,4 +1,4 @@
-import { useBurnerStore } from "@/store/useBurnerStore";
+import { useBurnerStore } from "./useBurnerStore";
 
 export const checkAndHandleRollover = () => {
   const { current, startNewSession, settings } = useBurnerStore.getState();

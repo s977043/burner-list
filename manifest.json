@@ -1,7 +1,7 @@
 {
-  "name": "Burner List",
+  "name": "バーナーリスト",
   "short_name": "BurnerList",
-  "description": "A productivity app for managing Front Burner, Back Burner, and Kitchen Sink tasks",
+  "description": "フロントバーナー、バックバーナー、キッチンシンクのタスクを管理する生産性アプリ",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -22,7 +22,7 @@
     }
   ],
   "categories": ["productivity", "utilities"],
-  "lang": "en",
+  "lang": "ja",
   "dir": "ltr"
 }
 

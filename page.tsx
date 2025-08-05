@@ -1,13 +1,13 @@
 'use client';
 
-import { useBurnerStore } from '@/store/useBurnerStore';
-import { checkAndHandleRollover } from '@/lib/rollover';
-import FrontCard from '@/components/FrontCard';
-import BackCard from '@/components/BackCard';
-import SinkList from '@/components/SinkList';
-import QuickAdd from '@/components/QuickAdd';
-import RolloverDialog from '@/components/RolloverDialog';
-import SettingsSheet from '@/components/SettingsSheet';
+import { useBurnerStore } from './useBurnerStore';
+import { checkAndHandleRollover } from './rollover';
+import FrontCard from './FrontCard';
+import BackCard from './BackCard';
+import SinkList from './SinkList';
+import QuickAdd from './QuickAdd';
+import RolloverDialog from './RolloverDialog';
+import SettingsSheet from './SettingsSheet';
 import { useEffect, useState } from 'react';
 
 export default function Home() {

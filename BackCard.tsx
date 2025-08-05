@@ -1,7 +1,7 @@
 'use client';
 
-import { BurnerItem } from '@/types';
-import { useBurnerStore } from '@/store/useBurnerStore';
+import { BurnerItem } from './index';
+import { useBurnerStore } from './useBurnerStore';
 import { useState } from 'react';
 
 interface BackCardProps {
@@ -41,7 +41,7 @@ export default function BackCard({ item }: BackCardProps) {
           onClick={() => setIsEditing(true)}
           className="text-orange-600 hover:text-orange-800 text-lg font-medium"
         >
-          + Add Back Burner Item
+          + バックバーナー項目を追加
         </button>
       </div>
     );
@@ -50,7 +50,7 @@ export default function BackCard({ item }: BackCardProps) {
   return (
     <div className="bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 rounded-lg p-6 h-64 flex flex-col">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-orange-800 font-bold text-lg">🔶 Back Burner</h3>
+        <h3 className="text-orange-800 font-bold text-lg">🔶 バックバーナー</h3>
         {item && (
           <div className="flex gap-2">
             <button

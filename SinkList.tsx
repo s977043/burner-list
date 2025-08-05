@@ -1,7 +1,7 @@
 'use client';
 
-import { BurnerItem } from '@/types';
-import { useBurnerStore } from '@/store/useBurnerStore';
+import { BurnerItem } from './index';
+import { useBurnerStore } from './useBurnerStore';
 import { useState } from 'react';
 
 interface SinkListProps {
@@ -32,7 +32,7 @@ export default function SinkList({ items }: SinkListProps) {
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4">
       <h3 className="text-gray-800 font-bold text-lg mb-4 flex items-center">
-        🗂️ Kitchen Sink
+        🗂️ キッチンシンク
         <span className="ml-2 text-sm font-normal text-gray-500">
           ({items.length} items)
         </span>

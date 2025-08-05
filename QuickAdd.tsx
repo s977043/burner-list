@@ -1,6 +1,6 @@
 'use client';
 
-import { useBurnerStore } from '@/store/useBurnerStore';
+import { useBurnerStore } from './useBurnerStore';
 import { useState, useRef, useEffect } from 'react';
 
 interface QuickAddProps {
@@ -54,7 +54,7 @@ export default function QuickAdd({ onFocus }: QuickAddProps) {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Quick add to Kitchen Sink... (Press &apos;/&apos; to focus)"
+          placeholder="キッチンシンクに素早く追加... ('/' でフォーカス)"
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
         />
         <button
@@ -62,11 +62,11 @@ export default function QuickAdd({ onFocus }: QuickAddProps) {
           disabled={!content.trim()}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
         >
-          Add
+          追加
         </button>
       </div>
       <p className="text-xs text-gray-500 mt-1">
-        Press Enter to add, Escape to clear, or &apos;/&apos; to focus from anywhere
+        Enterで追加、Escapeでクリア、'/'で任意の場所からフォーカス
       </p>
     </form>
   );
