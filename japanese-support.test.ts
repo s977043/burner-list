@@ -11,26 +11,63 @@ const localStorageMock = {
 global.localStorage = localStorageMock as any;
 
 describe('Japanese Language Support', () => {
-  beforeEach(() => {
-    // Reset the store state before each test
-    useBurnerStore.getState()._setAppState({
-      current: {
-        id: 'test-session',
-        meta: {
-          startedAt: new Date().toISOString(),
-          periodType: 'day',
-        },
-        front: { type: 'front', items: [] },
-        back: { type: 'back', items: [] },
-        sink: { type: 'sink', items: [] },
-      },
-      history: [],
-      settings: {
+  // Helper to reset the burner store using public methods
+  function resetBurnerStoreForTest() {
+    const state = useBurnerStore.getState();
+    // Remove all items from each section
+    if (state.clearItems) {
+      state.clearItems('front');
+      state.clearItems('back');
+      state.clearItems('sink');
+    } else {
+      // Fallback: remove items manually if clearItems is not available
+      if (state.removeItem) {
+        while (state.current.front.items.length > 0) {
+          state.removeItem('front', 0);
+        }
+        while (state.current.back.items.length > 0) {
+          state.removeItem('back', 0);
+        }
+        while (state.current.sink.items.length > 0) {
+          state.removeItem('sink', 0);
+        }
+      }
+    }
+    // Reset settings if public setter exists
+    if (state.setSettings) {
+      state.setSettings({
         defaultPeriod: 'day',
         autoDowngradeIncomplete: true,
         pushEnabled: false,
-      },
-    });
+      });
+    }
+    // Reset history if public method exists
+    if (state.clearHistory) {
+      state.clearHistory();
+    } else if (state.history && Array.isArray(state.history)) {
+      state.history.length = 0;
+    }
+    // Reset meta if public setter exists
+    if (state.setMeta) {
+      state.setMeta({
+        startedAt: new Date().toISOString(),
+        periodType: 'day',
+      });
+    } else if (state.current && state.current.meta) {
+      state.current.meta.startedAt = new Date().toISOString();
+      state.current.meta.periodType = 'day';
+    }
+    // Reset session id if public setter exists
+    if (state.setSessionId) {
+      state.setSessionId('test-session');
+    } else if (state.current && state.current.id) {
+      state.current.id = 'test-session';
+    }
+  }
+
+  beforeEach(() => {
+    // Reset the store state before each test using public methods
+    resetBurnerStoreForTest();
   });
 
   it('should handle Japanese text input in tasks', () => {
