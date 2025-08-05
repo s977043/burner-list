@@ -2,6 +2,8 @@
 
 A productivity web application that helps you manage tasks using the "Burner" methodology - organizing your work into Front Burner (top priority), Back Burner (next priority), and Kitchen Sink (everything else).
 
+**[日本語版はこちら (Japanese Version)](README.ja.md)**
+
 ## 🎯 Problem It Solves
 
 Traditional todo lists can become overwhelming with endless items. Burner List solves this by:
