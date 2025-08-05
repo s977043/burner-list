@@ -54,7 +54,7 @@ export default function QuickAdd({ onFocus }: QuickAddProps) {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="キッチンシンクに素早く追加... ('/キー' でフォーカス)"
+          placeholder="キッチンシンクに素早く追加... ('/' でフォーカス)"
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
         />
         <button
