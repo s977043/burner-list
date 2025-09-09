@@ -11,58 +11,32 @@ const localStorageMock = {
 global.localStorage = localStorageMock as any;
 
 describe('Japanese Language Support', () => {
-  // Helper to reset the burner store using public methods
+  // Helper to reset the burner store using _setAppState
   function resetBurnerStoreForTest() {
     const state = useBurnerStore.getState();
-    // Remove all items from each section
-    if (state.clearItems) {
-      state.clearItems('front');
-      state.clearItems('back');
-      state.clearItems('sink');
-    } else {
-      // Fallback: remove items manually if clearItems is not available
-      if (state.removeItem) {
-        while (state.current.front.items.length > 0) {
-          state.removeItem('front', 0);
-        }
-        while (state.current.back.items.length > 0) {
-          state.removeItem('back', 0);
-        }
-        while (state.current.sink.items.length > 0) {
-          state.removeItem('sink', 0);
-        }
-      }
-    }
-    // Reset settings if public setter exists
-    if (state.setSettings) {
-      state.setSettings({
-        defaultPeriod: 'day',
+    
+    // Create a fresh initial state
+    const freshState = {
+      current: {
+        id: 'test-session-' + Date.now(),
+        meta: {
+          startedAt: new Date().toISOString(),
+          periodType: 'day' as const,
+        },
+        front: { type: 'front' as const, items: [] },
+        back: { type: 'back' as const, items: [] },
+        sink: { type: 'sink' as const, items: [] },
+      },
+      history: [],
+      settings: {
+        defaultPeriod: 'day' as const,
         autoDowngradeIncomplete: true,
         pushEnabled: false,
-      });
-    }
-    // Reset history if public method exists
-    if (state.clearHistory) {
-      state.clearHistory();
-    } else if (state.history && Array.isArray(state.history)) {
-      state.history.length = 0;
-    }
-    // Reset meta if public setter exists
-    if (state.setMeta) {
-      state.setMeta({
-        startedAt: new Date().toISOString(),
-        periodType: 'day',
-      });
-    } else if (state.current && state.current.meta) {
-      state.current.meta.startedAt = new Date().toISOString();
-      state.current.meta.periodType = 'day';
-    }
-    // Reset session id if public setter exists
-    if (state.setSessionId) {
-      state.setSessionId('test-session');
-    } else if (state.current && state.current.id) {
-      state.current.id = 'test-session';
-    }
+      },
+    };
+    
+    // Use the internal _setAppState method to reset completely
+    state._setAppState(freshState);
   }
 
   beforeEach(() => {
@@ -126,6 +100,9 @@ describe('Japanese Language Support', () => {
   });
 
   it('should handle hiragana, katakana, and kanji characters', () => {
+    // Reset store state first to ensure clean test
+    resetBurnerStoreForTest();
+    
     const { addItem } = useBurnerStore.getState();
     
     // Test different Japanese writing systems
@@ -144,6 +121,9 @@ describe('Japanese Language Support', () => {
   });
 
   it('should handle emoji with Japanese text', () => {
+    // Reset store state first to ensure clean test
+    resetBurnerStoreForTest();
+    
     const { addItem } = useBurnerStore.getState();
     
     const textWithEmoji = '🔥 重要なタスク 📝';

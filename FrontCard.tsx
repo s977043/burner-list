@@ -62,7 +62,7 @@ export default function FrontCard({ item }: FrontCardProps) {
             <button
               onClick={() => demoteItem(item.id)}
               className="text-red-600 hover:text-red-800 text-sm"
-              title="Demote to Back Burner"
+              title="バックバーナーに降格"
             >
               ⬇️
             </button>
@@ -82,7 +82,7 @@ export default function FrontCard({ item }: FrontCardProps) {
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
             className="flex-1 p-2 border border-red-300 rounded resize-none"
-            placeholder="What's your top priority?"
+            placeholder="最重要なタスクは何ですか？"
             autoFocus
           />
           <div className="flex gap-2 mt-2">
@@ -90,13 +90,13 @@ export default function FrontCard({ item }: FrontCardProps) {
               onClick={handleSave}
               className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
             >
-              Save
+              保存
             </button>
             <button
               onClick={() => setIsEditing(false)}
               className="px-3 py-1 bg-gray-300 text-gray-700 rounded text-sm hover:bg-gray-400"
             >
-              Cancel
+              キャンセル
             </button>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function FrontCard({ item }: FrontCardProps) {
           {totalSubtasks > 0 && (
             <div className="mb-3">
               <div className="flex justify-between text-sm text-gray-600 mb-1">
-                <span>Progress</span>
+                <span>進捗</span>
                 <span>{completedSubtasks}/{totalSubtasks}</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -142,7 +142,7 @@ export default function FrontCard({ item }: FrontCardProps) {
               type="text"
               value={newSubtask}
               onChange={(e) => setNewSubtask(e.target.value)}
-              placeholder="Add subtask..."
+              placeholder="サブタスクを追加..."
               className="flex-1 px-2 py-1 border border-red-300 rounded text-sm"
               onKeyPress={(e) => e.key === 'Enter' && handleAddSubtask()}
             />

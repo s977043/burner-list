@@ -62,14 +62,14 @@ export default function BackCard({ item }: BackCardProps) {
             <button
               onClick={() => promoteItem(item.id)}
               className="text-orange-600 hover:text-orange-800 text-sm"
-              title="Promote to Front Burner"
+              title="フロントバーナーに昇格"
             >
               ⬆️
             </button>
             <button
               onClick={() => demoteItem(item.id)}
               className="text-orange-600 hover:text-orange-800 text-sm"
-              title="Demote to Kitchen Sink"
+              title="キッチンシンクに降格"
             >
               ⬇️
             </button>
@@ -89,7 +89,7 @@ export default function BackCard({ item }: BackCardProps) {
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
             className="flex-1 p-2 border border-orange-300 rounded resize-none"
-            placeholder="What's your next priority?"
+            placeholder="次の優先タスクは何ですか？"
             autoFocus
           />
           <div className="flex gap-2 mt-2">
@@ -97,13 +97,13 @@ export default function BackCard({ item }: BackCardProps) {
               onClick={handleSave}
               className="px-3 py-1 bg-orange-600 text-white rounded text-sm hover:bg-orange-700"
             >
-              Save
+              保存
             </button>
             <button
               onClick={() => setIsEditing(false)}
               className="px-3 py-1 bg-gray-300 text-gray-700 rounded text-sm hover:bg-gray-400"
             >
-              Cancel
+              キャンセル
             </button>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function BackCard({ item }: BackCardProps) {
           {totalSubtasks > 0 && (
             <div className="mb-3">
               <div className="flex justify-between text-sm text-gray-600 mb-1">
-                <span>Progress</span>
+                <span>進捗</span>
                 <span>{completedSubtasks}/{totalSubtasks}</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -149,7 +149,7 @@ export default function BackCard({ item }: BackCardProps) {
               type="text"
               value={newSubtask}
               onChange={(e) => setNewSubtask(e.target.value)}
-              placeholder="Add subtask..."
+              placeholder="サブタスクを追加..."
               className="flex-1 px-2 py-1 border border-orange-300 rounded text-sm"
               onKeyPress={(e) => e.key === 'Enter' && handleAddSubtask()}
             />

@@ -63,10 +63,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">🔥 Burner List</h1>
+              <h1 className="text-2xl font-bold text-gray-900">🔥 バーナーリスト</h1>
               <p className="text-sm text-gray-500">
-                {current.meta.periodType === 'day' ? 'Daily' : 'Weekly'} Session - 
-                Started {new Date(current.meta.startedAt).toLocaleDateString()}
+                {current.meta.periodType === 'day' ? 'デイリー' : 'ウィークリー'}セッション - 
+                開始日 {new Date(current.meta.startedAt).toLocaleDateString()}
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -74,13 +74,13 @@ export default function Home() {
                 onClick={() => setShowRolloverDialog(true)}
                 className="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
               >
-                🔄 New Session
+                🔄 新しいセッション
               </button>
               <button
                 onClick={() => setShowSettings(true)}
                 className="px-3 py-2 text-sm bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
               >
-                ⚙️ Settings
+                ⚙️ 設定
               </button>
             </div>
           </div>
