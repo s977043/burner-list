@@ -57,7 +57,7 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
                       })}
                       className="mr-2"
                     />
-                    Daily
+                    デイリー
                   </label>
                   <label className="flex items-center">
                     <input
@@ -70,7 +70,7 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
                       })}
                       className="mr-2"
                     />
-                    Weekly
+                    ウィークリー
                   </label>
                 </div>
               </div>
@@ -87,11 +87,11 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
                     className="mr-2"
                   />
                   <span className="text-sm text-gray-700">
-                    Auto-downgrade incomplete items during rollover
+                    ロールオーバー時に未完了の項目を自動降格
                   </span>
                 </label>
                 <p className="text-xs text-gray-500 mt-1 ml-6">
-                  When starting a new session, incomplete Front/Back items will be moved to Kitchen Sink
+                  新しいセッションを開始する際、未完了のフロント/バック項目はキッチンシンクに移動されます
                 </p>
               </div>
 
@@ -107,21 +107,21 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
                     className="mr-2"
                   />
                   <span className="text-sm text-gray-700">
-                    Enable push notifications (Future feature)
+                    プッシュ通知を有効にする（将来の機能）
                   </span>
                 </label>
                 <p className="text-xs text-gray-500 mt-1 ml-6">
-                  Get reminders for session rollovers and task deadlines
+                  セッションロールオーバーとタスク期限のリマインダーを受け取る
                 </p>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-3">Session History</h3>
+            <h3 className="text-lg font-semibold mb-3">セッション履歴</h3>
             <div className="bg-gray-50 rounded p-3">
               <p className="text-sm text-gray-600 mb-2">
-                Total completed sessions: {history.length}
+                完了したセッション総数: {history.length}
               </p>
               {history.length > 0 ? (
                 <div className="space-y-1 max-h-32 overflow-y-auto">
@@ -132,29 +132,29 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
                   ))}
                   {history.length > 5 && (
                     <div className="text-xs text-gray-400">
-                      ... and {history.length - 5} more
+                      ... その他 {history.length - 5} 件
                     </div>
                   )}
                 </div>
               ) : (
-                <p className="text-xs text-gray-500">No completed sessions yet</p>
+                <p className="text-xs text-gray-500">完了したセッションはまだありません</p>
               )}
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-3">Keyboard Shortcuts</h3>
+            <h3 className="text-lg font-semibold mb-3">キーボードショートカット</h3>
             <div className="bg-gray-50 rounded p-3 space-y-1">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Quick add focus:</span>
+                <span className="text-gray-600">クイック追加フォーカス:</span>
                 <code className="bg-gray-200 px-1 rounded">/</code>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Focus Front Burner:</span>
+                <span className="text-gray-600">フロントバーナーフォーカス:</span>
                 <code className="bg-gray-200 px-1 rounded">f</code>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Focus Back Burner:</span>
+                <span className="text-gray-600">バックバーナーフォーカス:</span>
                 <code className="bg-gray-200 px-1 rounded">b</code>
               </div>
             </div>
@@ -166,13 +166,13 @@ export default function SettingsSheet({ isOpen, onClose }: SettingsSheetProps) {
             onClick={handleSave}
             className="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
-            Save Changes
+            変更を保存
           </button>
           <button
             onClick={handleReset}
             className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition-colors"
           >
-            Reset
+            リセット
           </button>
         </div>
       </div>

@@ -34,14 +34,14 @@ export default function SinkList({ items }: SinkListProps) {
       <h3 className="text-gray-800 font-bold text-lg mb-4 flex items-center">
         🗂️ キッチンシンク
         <span className="ml-2 text-sm font-normal text-gray-500">
-          ({items.length} items)
+          ({items.length} 項目)
         </span>
       </h3>
       
       <div className="space-y-2 max-h-96 overflow-y-auto">
         {items.length === 0 ? (
           <p className="text-gray-500 text-center py-8">
-            No items in the kitchen sink yet.
+            キッチンシンクにはまだ項目がありません。
           </p>
         ) : (
           items.map((item) => (
@@ -71,13 +71,13 @@ export default function SinkList({ items }: SinkListProps) {
                         onClick={() => handleSave(item.id)}
                         className="px-2 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700"
                       >
-                        Save
+                        保存
                       </button>
                       <button
                         onClick={() => setEditingId(null)}
                         className="px-2 py-1 bg-gray-300 text-gray-700 rounded text-sm hover:bg-gray-400"
                       >
-                        Cancel
+                        キャンセル
                       </button>
                     </div>
                   ) : (
@@ -101,7 +101,7 @@ export default function SinkList({ items }: SinkListProps) {
                       </span>
                       {item.status === 'dropped' && (
                         <span className="text-xs text-gray-400 bg-gray-200 px-2 py-1 rounded">
-                          Dropped
+                          ドロップ済み
                         </span>
                       )}
                     </div>
@@ -113,21 +113,21 @@ export default function SinkList({ items }: SinkListProps) {
                     <button
                       onClick={() => handleEdit(item)}
                       className="text-gray-600 hover:text-gray-800 text-sm"
-                      title="Edit"
+                      title="編集"
                     >
                       ✏️
                     </button>
                     <button
                       onClick={() => promoteItem(item.id)}
                       className="text-gray-600 hover:text-gray-800 text-sm"
-                      title="Promote to Back Burner"
+                      title="バックバーナーに昇格"
                     >
                       ⬆️
                     </button>
                     <button
                       onClick={() => deleteItem('sink', item.id)}
                       className="text-gray-600 hover:text-gray-800 text-sm"
-                      title="Delete"
+                      title="削除"
                     >
                       🗑️
                     </button>
